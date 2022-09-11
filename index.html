@@ -109,7 +109,12 @@
             const number = parseFloat(value);
             document.getElementById(id).value = "";
 
-            return number;
+            if(isNaN(number)){
+                return 0;
+            } else {
+                return number;
+            }
+
         }
 
         ///// For Update value

@@ -103,28 +103,6 @@
 
         });
 
-        //// For getting value
-        function gettingValue(id){
-            const value = document.getElementById(id).value;
-            const number = parseFloat(value);
-            document.getElementById(id).value = "";
-
-            if(isNaN(number)){
-                return 0;
-            } else {
-                return number;
-            }
-
-        }
-
-        ///// For Update value
-        function updateValue(id, newNumber){
-            const current = document.getElementById(id).innerText;
-            const currentNumber = parseFloat(current);
-            const final = currentNumber + newNumber;
-            document.getElementById(id).innerText = final;
-        }
-
         ///// For withdraw part
         document.getElementById('addWithdraw').addEventListener('click', function(){
             ///// Current value 
@@ -143,16 +121,39 @@
             // const currentBalanceNumber = parseFloat(currentBalance);
             // const finalBalance = currentBalanceNumber - withdrawNumber;
             // document.getElementById('currentBalance').innerText = finalBalance;
+            // gettingValue('withdrawValue');
 
             /// Getting Value and using function
             const withdrawNumber = gettingValue('withdrawValue');
-            gettingValue('withdrawValue');
             //////// Update value from function
             updateValue('currentWithdraw', withdrawNumber);
             
             //// Update Balance with function
             updateValue('currentBalance', -1 * withdrawNumber);
         });
+
+        //// For getting value
+        function gettingValue(id){
+            const value = document.getElementById(id).value;
+            const number = parseFloat(value);
+            document.getElementById(id).value = "";
+            
+            if(isNaN(number) || number <= 0){
+                alert("Sorry, It's not a valid number");
+                return 0;
+            } else {
+                return number;
+            }
+
+        }
+
+        ///// For Update value
+        function updateValue(id, newNumber){
+            const current = document.getElementById(id).innerText;
+            const currentNumber = parseFloat(current);
+            const final = currentNumber + newNumber;
+            document.getElementById(id).innerText = final;
+        }
 
     </script>
 </body>
